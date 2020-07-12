@@ -13,10 +13,8 @@ export default class Weather extends Component {
           <Text style={styles.temp}>Temp Here</Text>
         </View>
         <View style={styles.lower}>
-          <Text style={styles
-        .title}>Raining Like a MF</Text>
-          <Text style={styles
-        .subtitle}>For more info look outsied</Text>
+          <Text style={styles.title}>Raining Like a MF</Text>
+          <Text style={styles.subtitle}>For more info look outsied</Text>
         </View>
       </LinearGradient>
     );
@@ -33,31 +31,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  temp:{
-    fontSize: 24,
+  temp: {
+    fontSize: 38,
     backgroundColor: 'transparent',
-    color:'white',
-    marginBottom: 24
+    color: 'white',
+    marginTop: 10,
   },
-  lower:{
-    
+  lower: {
     flex: 1,
-    alignItems:'flex-start',
-    justifyContent :'flex-end',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
     paddingLeft: 25,
   },
-  title:{
-      fontSize: 38,
-      backgroundColor: 'transparent',
-      color:'white',
-      marginBottom: 10,
-      fontWeight: "300"
+  title: {
+    fontSize: 38,
+    backgroundColor: 'transparent',
+    color: 'white',
+    marginBottom: 10,
+    fontWeight: '300',
   },
-  subtitle:{
+  subtitle: {
     fontSize: 24,
     backgroundColor: 'transparent',
-    color:'white',
-    marginBottom: 24
-  }
-  
+    color: 'white',
+    marginBottom: 24,
+  },
 });
