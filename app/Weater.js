@@ -10,13 +10,8 @@ export default class Weather extends Component {
         colors={['#4c669f', '#3b5998', '#192f6a']}
         style={styles.container}>
         <View style={styles.upper}>
-          <Icon
-            reverse
-            name="ios-american-football"
-            type="ionicon"
-            color="#517fa4"
-          />
-          <Text>Icon Here</Text>
+          <Icon name="ios-rainy" type="ionicon" color="#517fa4" size={144} color='white'/>
+        
           <Text style={styles.temp}>Temp Here</Text>
         </View>
         <View style={styles.lower}>
