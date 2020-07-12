@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, ActivityIndicator} from 'react-native';
 
+import Weather from "../Weater";
+
+
 export default class MainApp extends Component {
   state = {
     isLoaded: false,
@@ -10,7 +13,7 @@ export default class MainApp extends Component {
     const {isLoaded} = this.state;
     return (
       <View style={styles.container}>
-        {isLoaded ? null : (
+        {isLoaded ? (<Weather></Weather>) : (
           <View style={styles.loading}>
             <Text style={styles.loadingText}>Getting the Weather </Text>
           </View>
@@ -39,8 +42,6 @@ const styles = StyleSheet.create({
   loadingText: {
     fontSize: 38,
     marginBottom: 100,
-
-
-
+    fontWeight:'bold'
   },
 });
