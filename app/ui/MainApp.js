@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, ActivityIndicator} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ActivityIndicator,
+  StatusBar,
+} from 'react-native';
 
-import Weather from "../Weater";
+import Weather from '../Weater';
+import { Icon } from 'react-native-elements';
 
 
 export default class MainApp extends Component {
@@ -13,7 +21,10 @@ export default class MainApp extends Component {
     const {isLoaded} = this.state;
     return (
       <View style={styles.container}>
-        {isLoaded ? (<Weather></Weather>) : (
+        <StatusBar hidden={true}></StatusBar>
+        {isLoaded ? (
+          <Weather></Weather>
+        ) : (
           <View style={styles.loading}>
             <Text style={styles.loadingText}>Getting the Weather </Text>
           </View>
@@ -37,11 +48,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDF6AA',
     justifyContent: 'flex-end',
     paddingRight: 24,
-    paddingLeft: 24
+    paddingLeft: 24,
   },
   loadingText: {
     fontSize: 38,
     marginBottom: 100,
-    fontWeight:'bold'
+    fontWeight: 'bold',
   },
 });
