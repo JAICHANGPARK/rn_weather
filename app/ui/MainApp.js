@@ -6,7 +6,7 @@ import Weather from "../Weater";
 
 export default class MainApp extends Component {
   state = {
-    isLoaded: false,
+    isLoaded: true,
   };
 
   render() {
