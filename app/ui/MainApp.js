@@ -9,11 +9,28 @@ import {
 } from 'react-native';
 
 import Weather from '../Weater';
+import Geolocation from '@react-native-community/geolocation';
+
 
 export default class MainApp extends Component {
   state = {
     isLoaded: false,
   };
+  componentDidMount(){
+    Geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          isLoaded : true
+        })
+          console.log(position);
+      },
+      (error) => {
+          // See error code charts below.
+          console.log(error.code, error.message);
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+  );
+  }
 
   render() {
     const {isLoaded} = this.state;

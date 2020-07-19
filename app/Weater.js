@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     backgroundColor: 'transparent',
     color: 'white',
-    marginBottom: 24,
+    marginBottom: 16,
   },
 });
