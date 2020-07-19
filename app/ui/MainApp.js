@@ -12,24 +12,46 @@ import Weather from '../Weater';
 import Geolocation from '@react-native-community/geolocation';
 
 
+
 export default class MainApp extends Component {
   state = {
     isLoaded: false,
+    errors: null,
+    temperature:null,
+    name: null
   };
-  componentDidMount(){
+  componentDidMount() {
     Geolocation.getCurrentPosition(
       (position) => {
         this.setState({
-          isLoaded : true
-        })
-          console.log(position);
+          
+        });
+        console.log(position);
+        this._getWeather(position.coords.latitude, position.coords.longitude)
       },
       (error) => {
-          // See error code charts below.
-          console.log(error.code, error.message);
+        // See error code charts below.
+        console.log(error.code, error.message);
+        this.setState({
+          // errors: error.message,
+        });
       },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-  );
+      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+    );
+  }
+
+  _getWeather = (lat, lang) => {
+     console.log(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lang}&appid=${API_KEY}`)
+      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lang}&appid=${API_KEY}`)
+      .then(response => response.json())
+      .then(json => {
+        console.log(json)
+        this.setState({
+          temperature: json.main.temp,
+          name: json.weather[0].main,
+          isLoaded: true,
+        })
+      })
   }
 
   render() {
@@ -41,7 +63,8 @@ export default class MainApp extends Component {
           <Weather></Weather>
         ) : (
           <View style={styles.loading}>
-            <Text style={styles.loadingText}>Getting the Weather </Text>
+            <Text style={styles.loadingText}>Getting the Weather</Text>
+            {/* {errors ? <Text>{errors}</Text> : null} */}
           </View>
         )}
       </View>
@@ -57,6 +80,10 @@ const styles = StyleSheet.create({
     // alignItems: 'stretch',
     // flexDirection: 'row',
     // flexWrap: 'wrap',
+  },
+  errorText: {
+    color: 'red',
+    backgroundColor: 'white',
   },
   loading: {
     flex: 1,
