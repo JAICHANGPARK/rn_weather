@@ -9,12 +9,10 @@ import {
 } from 'react-native';
 
 import Weather from '../Weater';
-import { Icon } from 'react-native-elements';
-
 
 export default class MainApp extends Component {
   state = {
-    isLoaded: true,
+    isLoaded: false,
   };
 
   render() {
